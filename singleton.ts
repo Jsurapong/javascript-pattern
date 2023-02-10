@@ -3,12 +3,6 @@
 // Here is an example of how the Singleton pattern can be implemented in a functional programming style in TypeScript:
 
 // EX1 Functional Singleton
-// In this example, the Singleton closure returns an object that provides access to the single instance of the createInstance function.
-// The createInstance function creates an object with a name property and a getName method.
-// The Singleton.getInstance method is used to get the single instance of the createInstance function.
-// When called for the first time, it creates the instance and stores it in the instance variable. 
-// Subsequent calls to Singleton.getInstance return the same instance, ensuring that there is only one instance of the createInstance function in the entire application.
-
 const Singleton = (() => {
     let instance: any;
 
@@ -38,6 +32,12 @@ const singleton1 = Singleton.getInstance();
 const singleton2 = Singleton.getInstance();
 
 console.log(singleton1 === singleton2); // true
+// In this example, the Singleton closure returns an object that provides access to the single instance of the createInstance function.
+// The createInstance function creates an object with a name property and a getName method.
+// The Singleton.getInstance method is used to get the single instance of the createInstance function.
+// When called for the first time, it creates the instance and stores it in the instance variable. 
+// Subsequent calls to Singleton.getInstance return the same instance, ensuring that there is only one instance of the createInstance function in the entire application.
+
 
 
 //EX2 class
