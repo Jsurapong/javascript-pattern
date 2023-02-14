@@ -37,8 +37,8 @@ const dialog = factory('Mac');
 const button = dialog.createButton();
 button.render();
 
-  // Output:
-  // Rendering a Mac button.
+// Output:
+// Rendering a Mac button.
 
 
 // In this example, the Button and Dialog interfaces represent the products and the factory, respectively.
@@ -50,3 +50,56 @@ button.render();
 
 // This is the essence of the Abstract Factory pattern: it provides a way to encapsulate a group of related products and to create objects without specifying their concrete classes.
 // The abstract factory can be used to generate families of related products that are designed to work together, and it provides a level of abstraction between the client code and the concrete products.
+
+type Chair = {}
+type Sofa = {}
+type CoffeeTable = {}
+
+type Furniture = {
+    createChair(): Chair;
+    createSofa(): Sofa;
+    createCoffeeTable(): CoffeeTable;
+}
+
+const VictorianChair: Chair = {
+
+}
+const VictorianSofa: Sofa = {}
+const VictorianCoffeeTable: CoffeeTable = {}
+
+// Concrete Instances
+const VictorianFurniture: Furniture = {
+    createChair: () => VictorianChair,
+    createSofa: () => VictorianSofa,
+    createCoffeeTable: () => VictorianCoffeeTable,
+}
+
+const ModernChair: Chair = {}
+const ModernSofa: Sofa = {}
+const ModernCoffeeTable: CoffeeTable = {}
+
+// Concrete Instances
+const ModernFurniture: Furniture = {
+    createChair: () => ModernChair,
+    createSofa: () => ModernSofa,
+    createCoffeeTable: () => ModernCoffeeTable,
+}
+
+// Abstract Factory
+const furnitureFactory = (style: 'Victorian' | 'Modern'): Furniture => {
+    switch (style) {
+        case 'Victorian':
+            return VictorianFurniture;
+        case 'Modern':
+            return ModernFurniture;
+        default:
+            throw new Error('Invalid style.');
+    }
+}
+
+const furniture = furnitureFactory('Modern');
+const chair = furniture.createChair();
+const sofa = furniture.createSofa();
+const coffeeTable = furniture.createCoffeeTable();
+
+
